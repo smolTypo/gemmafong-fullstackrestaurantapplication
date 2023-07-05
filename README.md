@@ -1,8 +1,10 @@
 # Capstone Project: Restaurant Application
 
-This is a full-stack restaurant application developed as part of the MIT MERN Full Stack coding certification. It allows users to browse and order food items from a restaurant menu.
+The Restaurant Application is a full-stack web application developed as part of the MIT MERN Full Stack coding certification. It aims to provide users with a seamless experience for browsing and ordering food items from a restaurant's menu.
 
-The application is built using the following technologies:
+This App caters to both end-users and administrators. End-users can browse the menu, add items to their carts, and place orders. Administrators have additional privileges, including managing the menu by adding, updating, and deleting food items, as well as viewing order history for better business insights.
+
+## The application is built using the following technologies:
 
 -  Front-end architecture: Next.js
 -  Authentication: JWT (JSON Web Tokens)
