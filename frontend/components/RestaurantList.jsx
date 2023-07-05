@@ -4,7 +4,7 @@ import Image from "next/image";
 import Loader from "./Loader";
 
 const QUERY = gql`
-  {
+  query GetRestaurants {
     restaurants {
       data {
         id
@@ -23,6 +23,7 @@ const QUERY = gql`
     }
   }
 `;
+
 
 function RestaurantCard({ data }) {
   return (
