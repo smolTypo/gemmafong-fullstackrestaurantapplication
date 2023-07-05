@@ -3,7 +3,7 @@ import { AppProvider } from "@/context/AppContext";
 import "@/styles/globals.css";
 import Layout from "@/components/Layout";
 
-const API_URL = process.env.STRAPI_URL || "https://strapi-7u75.onrender.co";
+const API_URL = process.env.STRAPI_URL || "https://strapi-7u75.onrender.com";
 
 export const client = new ApolloClient({
   uri: `${API_URL}/graphql`,
