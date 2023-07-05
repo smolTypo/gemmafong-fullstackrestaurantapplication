@@ -82,4 +82,6 @@ This application can be deployed using the following platforms:
   - Ensure that the respective environment variables are set correctly in the deployment platforms.
 
 
-This project is licensed under the MIT License. 
+## License
+
+This project is licensed under the <a href="https://github.com/smolTypo/restaurant-app/blob/main/LICENSE">MIT License.</a>
