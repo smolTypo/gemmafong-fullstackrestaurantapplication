@@ -3,7 +3,7 @@ import { centsToDollars } from "@/utils/centsToDollars";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 
-/* import Image from "next/image"; */
+import Image from "next/image"; 
 import Loader from '@/components/Loader';
 
 const GET_RESTAURANT_DISHES = gql`
