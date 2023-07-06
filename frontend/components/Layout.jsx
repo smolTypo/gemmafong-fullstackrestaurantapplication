@@ -18,7 +18,7 @@ function Navigation() {
   }
 
   return (
-    <header className="bg-green-800">
+    <header className="#294d8c">
       <nav className="flex justify-between p-6 px-4">
         <div className="flex justify-between items-center w-full mx-16">
           <div className="xl:w-1/3">
