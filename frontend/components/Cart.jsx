@@ -56,6 +56,14 @@ export default function Cart() {
     router.push("/checkout");
   }
 
+    // Check if the cart has any items with quantity greater than 0
+  const hasItemsInCart = cart.items && cart.items.some(item => item.quantity > 0);
+
+  // Hide the cart if there are no items in it
+  if (!hasItemsInCart) {
+    setShowCart(false);
+  }
+
   return (
     <section className="fixed right-20 top-[242px]">
       <div className="relative">
