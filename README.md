@@ -4,6 +4,11 @@ The Restaurant Application is a full-stack web application developed as part of 
 
 This App caters to both end-users and administrators. End-users can browse the menu, add items to their carts, and place orders. Administrators have additional privileges, including managing the menu by adding, updating, and deleting food items, as well as viewing order history for better business insights.
 
+Project deployment:
+https://gemmafong-fullstackrestaurantapplication-smoltypo.vercel.app
+
+** Please note that I am currently hosting my project with Vercel's free tier-- There is a brief but annoying delay of around 75 seconds for the app to spin up when accessed after period of inactivity. **
+
 <img src="https://github.com/smolTypo/restaurant-app/blob/main/RestaurantApp.png"/>
 
 ## The application is built using the following technologies:
