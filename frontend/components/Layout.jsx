@@ -73,6 +73,13 @@ function Navigation() {
   );
 }
   
+function Footer() {
+  return (
+    <footer className="bg-green-800 text-white py-4 text-center">
+      Capstone Full Stack Restaurant Application Project developed by Gemma Fong as part of MIT xPRO Professional Certificate in Coding: Full Stack Development with MERN
+    </footer>
+  );
+}
   
 
 export default function Layout(props) {
@@ -88,6 +95,7 @@ export default function Layout(props) {
       <Navigation />
       <Cart />
       <div className="container mx-auto px-4">{props.children}</div>
+      <Footer />
     </div>
   );
 }
