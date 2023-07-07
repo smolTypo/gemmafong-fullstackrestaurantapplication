@@ -18,12 +18,17 @@ const QUERY = gql`
               }
             }
           }
+          dishes {
+            id
+            name
+            description
+            price
+          }
         }
       }
     }
   }
 `;
-
 
 function RestaurantCard({ data }) {
   return (
@@ -36,7 +41,6 @@ function RestaurantCard({ data }) {
           src={`${process.env.STRAPI_URL || "https://strapi-7u75.onrender.com"}${
             data.attributes.image.data[0].attributes.url
           }`}
-
           alt=""
         />
         <div className="p-8">
@@ -68,27 +72,36 @@ function RestaurantList(props) {
   if (error) return "Error loading restaurants";
   if (loading) return <Loader />;
 
-  if (data.restaurants.data && data.restaurants.data.length) {
-    const searchQuery = data.restaurants.data.filter((query) =>
-      query.attributes.name.toLowerCase().includes(props.query.toLowerCase())
-    );
+  const restaurant = data.restaurants.data.find(
+    (restaurant) => restaurant.id === props.restaurantId
+  );
 
-    if (searchQuery.length != 0) {
-      return (
-        <div className="py-16 px-8 bg-white rounded-3xl">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-wrap -m-4 mb-6">
-              {searchQuery.map((res) => {
-                return <RestaurantCard key={res.id} data={res} />;
-              })}
-            </div>
+  if (!restaurant) return <h1>Restaurant not found</h1>;
+
+  const searchQuery = restaurant.attributes.dishes.filter((dish) =>
+    dish.name.toLowerCase().includes(props.query.toLowerCase())
+  );
+
+  if (searchQuery.length !== 0) {
+    return (
+      <div className="py-16 px-8 bg-white rounded-3xl">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap -m-4 mb-6">
+            {searchQuery.map((dish) => (
+              <div key={dish.id}>
+                <h4 className="mt-4 text-gray-900 font-bold">{dish.name}</h4>
+                <p className="text-gray-500">{dish.description}</p>
+                <p className="text-gray-700 font-bold">${dish.price}</p>
+              </div>
+            ))}
           </div>
         </div>
-      );
-    } else {
-      return <h1>No Restaurants Found</h1>;
-    }
+      </div>
+    );
+  } else {
+    return <h1>No Dishes Found</h1>;
   }
-  return <h5>Add Restaurants</h5>;
 }
+
 export default RestaurantList;
+
