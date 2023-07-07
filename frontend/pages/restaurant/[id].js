@@ -3,17 +3,17 @@ import { centsToDollars } from "@/utils/centsToDollars";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 
-import Image from "next/image";
-import Loader from "@/components/Loader";
+import Image from "next/image"; 
+import Loader from '@/components/Loader';
 
 const GET_RESTAURANT_DISHES = gql`
-  query ($id: ID!, $query: String) {
+  query ($id: ID!) {
     restaurant(id: $id) {
       data {
         id
         attributes {
           name
-          dishes(query: $query) {
+          dishes {
             data {
               id
               attributes {
@@ -46,6 +46,7 @@ function DishCard({ data }) {
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 p-4">
+
       <div className="h-full bg-gray-100 rounded-2xl">
         <Image
           className="w-full rounded-2xl"
@@ -53,7 +54,7 @@ function DishCard({ data }) {
           width={300}
           src={`${process.env.STRAPI_URL || "https://strapi-7u75.onrender.com"}${
             data.attributes.image.data.attributes.url
-          }`}
+          }`} 
           alt=""
         />
         <div className="p-8">
@@ -85,7 +86,7 @@ function DishCard({ data }) {
 export default function Restaurant() {
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, {
-    variables: { id: router.query.id, query: "" }, // Initialize the query variable as an empty string
+    variables: { id: router.query.id },
   });
 
   if (error) return "Error Loading Dishes";
@@ -93,24 +94,11 @@ export default function Restaurant() {
   if (data.restaurant.data.attributes.dishes.data.length) {
     const { restaurant } = data;
 
-    const handleSearch = async (e) => {
-      const query = e.target.value.toLowerCase();
-      const { data } = await refetch({ query }); // Refetch the query with the updated query variable
-    };
-
     return (
-      <div className="py-6">
+      <div className='py-6'>
         <h1 className="text-4xl font-bold text-green-600">
           {restaurant.data.attributes.name}
         </h1>
-        <div className="py-4">
-          <input
-            type="text"
-            placeholder="Search for dishes"
-            onChange={handleSearch}
-            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          />
-        </div>
         <div className="py-16 px-8 bg-white rounded-3xl">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-wrap -m-4 mb-6">
@@ -126,4 +114,3 @@ export default function Restaurant() {
     return <h1>No Dishes Found</h1>;
   }
 }
-
