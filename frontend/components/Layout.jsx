@@ -22,31 +22,29 @@ function Navigation() {
       <nav className="flex justify-between p-6 px-4">
         <div className="flex justify-between items-center w-full mx-16">
           <div className="xl:w-1/3">
-            <Link
-              className="block text-2xl max-w-max text-white font-medium"
-              href="/"
-            >
-              FoodieEats
+            <Link href="/" passHref>
+              <a className="block text-3xl max-w-max text-white font-semibold">
+                FoodieEats
+              </a>
             </Link>
           </div>
 
           <div className="xl:block xl:w-1/3">
             <div className="flex items-center justify-end">
-              <Link
-                className="text-gray-50  hover:text-yellow-200 font-bold"
-                href="/"
-              >
-                Home
+              <Link href="/" passHref>
+                <a className="text-gray-50 hover:text-yellow-200 font-semibold text-lg">
+                  Home
+                </a>
               </Link>
 
               <div className="hxl:block">
                 {user ? (
                   <div className="flex items-center justify-end">
-                    <span className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50  hover:text-gray-100 bg-transparent font-medium rounded-md">
+                    <span className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50 hover:text-gray-100 bg-transparent font-semibold rounded-md">
                       {user.username}
                     </span>
                     <button
-                      className="inline-block py-2 px-4 text-sm leading-5 text-green-50 bg-green-500 hover:bg-green-600 font-medium focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md"
+                      className="inline-block py-2 px-4 text-sm leading-5 text-green-50 bg-green-500 hover:bg-green-600 font-semibold focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md"
                       onClick={handleLogout}
                     >
                       Log Out
@@ -54,17 +52,15 @@ function Navigation() {
                   </div>
                 ) : (
                   <div className="flex items-center justify-end">
-                    <Link
-                      className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50  hover:text-yellow-200 font-bold bg-transparent rounded-md"
-                      href="/login"
-                    >
-                      Log In
+                    <Link href="/login" passHref>
+                      <a className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50 hover:text-yellow-200 font-semibold bg-transparent rounded-md">
+                        Log In
+                      </a>
                     </Link>
-                    <Link
-                      className="inline-block py-2 px-4 text-sm leading-5 text-green-50 bg-green-600 hover:bg-green-700 font-medium focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md"
-                      href="/register"
-                    >
-                      Sign Up
+                    <Link href="/register" passHref>
+                      <a className="inline-block py-2 px-4 text-sm leading-5 text-green-50 bg-green-600 hover:bg-green-700 font-semibold focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md">
+                        Sign Up
+                      </a>
                     </Link>
                   </div>
                 )}
@@ -76,6 +72,8 @@ function Navigation() {
     </header>
   );
 }
+  
+  
 
 export default function Layout(props) {
   const title = "Welcome to FoodieEats";
