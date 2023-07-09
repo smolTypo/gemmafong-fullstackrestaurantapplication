@@ -84,7 +84,7 @@ function DishCard({ data }) {
 export default function Restaurant() {
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, {
-    variables: { id: router.query.id, searchQuery: "" },
+    variables: { id: router.query.id, searchQuery: router.query.searchQuery || "" },
   });
 
   if (error) return "Error Loading Dishes";
@@ -129,3 +129,4 @@ export default function Restaurant() {
     return <h1>No Dishes Found</h1>;
   }
 }
+
