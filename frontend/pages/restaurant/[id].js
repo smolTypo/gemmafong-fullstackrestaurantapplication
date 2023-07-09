@@ -2,18 +2,17 @@ import { gql, useQuery } from "@apollo/client";
 import { centsToDollars } from "@/utils/centsToDollars";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
-
 import Image from "next/image"; 
-import Loader from '@/components/Loader';
+import Loader from "@/components/Loader";
 
 const GET_RESTAURANT_DISHES = gql`
-  query ($id: ID!) {
+  query GetRestaurantDishes($id: ID!, $searchQuery: String) {
     restaurant(id: $id) {
       data {
         id
         attributes {
           name
-          dishes {
+          dishes(searchQuery: $searchQuery) {
             data {
               id
               attributes {
@@ -46,7 +45,6 @@ function DishCard({ data }) {
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 p-4">
-
       <div className="h-full bg-gray-100 rounded-2xl">
         <Image
           className="w-full rounded-2xl"
@@ -54,7 +52,7 @@ function DishCard({ data }) {
           width={300}
           src={`${process.env.STRAPI_URL || "https://strapi-7u75.onrender.com"}${
             data.attributes.image.data.attributes.url
-          }`} 
+          }`}
           alt=""
         />
         <div className="p-8">
@@ -86,12 +84,20 @@ function DishCard({ data }) {
 export default function Restaurant() {
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, {
-    variables: { id: router.query.id },
+    variables: { id: router.query.id, searchQuery: router.query.searchQuery || "" },
   });
 
-  if (error) return "Error Loading Dishes";
+  if (error) return `Error Loading Dishes: ${error.message}`;
   if (loading) return <Loader />;
-  if (data.restaurant.data.attributes.dishes.data.length) {
+  
+  const handleSearch = (searchQuery) => {
+    router.replace({
+      pathname: router.pathname,
+      query: { ...router.query, searchQuery },
+    });
+  };
+
+  if (data && data.restaurant.data.attributes.dishes.data.length) {
     const { restaurant } = data;
 
     return (
@@ -99,6 +105,15 @@ export default function Restaurant() {
         <h1 className="text-4xl font-bold text-green-600">
           {restaurant.data.attributes.name}
         </h1>
+        <div className="flex items-center justify-center my-4">
+          <input
+            type="text"
+            placeholder="Search Dishes..."
+            className="p-2 border border-gray-300 rounded-lg focus:outline-none"
+            value={router.query.searchQuery || ""}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+        </div>
         <div className="py-16 px-8 bg-white rounded-3xl">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-wrap -m-4 mb-6">
@@ -110,7 +125,10 @@ export default function Restaurant() {
         </div>
       </div>
     );
+  } else if (error) {
+    return <h1>Error Loading Dishes: {error.message}</h1>;
   } else {
     return <h1>No Dishes Found</h1>;
   }
 }
+
