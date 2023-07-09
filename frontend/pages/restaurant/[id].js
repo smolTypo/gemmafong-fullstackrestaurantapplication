@@ -87,7 +87,7 @@ export default function Restaurant() {
     variables: { id: router.query.id, searchQuery: router.query.searchQuery || "" },
   });
 
-  if (error) return "Error Loading Dishes";
+  if (error) return `Error Loading Dishes: ${error.message}`;
   if (loading) return <Loader />;
   
   const handleSearch = (searchQuery) => {
@@ -97,7 +97,7 @@ export default function Restaurant() {
     });
   };
 
-  if (data.restaurant.data.attributes.dishes.data.length) {
+  if (data && data.restaurant.data.attributes.dishes.data.length) {
     const { restaurant } = data;
 
     return (
@@ -125,6 +125,8 @@ export default function Restaurant() {
         </div>
       </div>
     );
+  } else if (error) {
+    return <h1>Error Loading Dishes: {error.message}</h1>;
   } else {
     return <h1>No Dishes Found</h1>;
   }
