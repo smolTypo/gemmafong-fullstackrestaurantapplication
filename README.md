@@ -1,4 +1,4 @@
-# Capstone Project: Restaurant Application [WORK IN PROGRESS!!!]
+# Capstone Project: Restaurant Application [Work In Progress!] 
 
 The Restaurant Application is a full-stack web application developed as part of the MIT MERN Full Stack coding certification. It aims to provide users with a seamless experience for browsing and ordering food items from a restaurant's menu.
 
