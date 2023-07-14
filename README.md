@@ -1,4 +1,4 @@
-# Capstone Project: Restaurant Application [Work In Progress!] 
+# Capstone Project: Restaurant Application 
 
 The Restaurant Application is a full-stack web application developed as part of the MIT MERN Full Stack coding certification. It aims to provide users with a seamless experience for browsing and ordering food items from a restaurant's menu.
 
@@ -7,7 +7,6 @@ This App caters to both end-users and administrators. End-users can browse the m
 Project deployment:
 https://gemmafong-fullstackrestaurantapplication-smoltypo.vercel.app
 
-** Please note that I am currently hosting my project with Vercel's free tier-- There is a brief but annoying delay of around 75 seconds for the app to spin up when accessed after period of inactivity. **
 
 <img src="https://github.com/smolTypo/restaurant-app/blob/main/RestaurantApp.png"/>
 
@@ -35,19 +34,9 @@ https://gemmafong-fullstackrestaurantapplication-smoltypo.vercel.app
 - Strapi CMS (installed and configured)
   
 ### Installation
-1. Clone the repository:
+1. Clone the repository.
 
-   - git clone https://github.com/smolTypo/restaurant-app.git
-
-2. Install the dependencies for the front-end and back-end:
-
-   #### Go to the front-end directory
-   - cd restaurant-app/frontend
-   - npm install
-
-   #### Go to the back-end directory
-   - cd ../backend
-   - npm install
+2. Install the dependencies for the front-end and back-end.
 
 3. Configure environment variables:
    
@@ -68,7 +57,7 @@ https://gemmafong-fullstackrestaurantapplication-smoltypo.vercel.app
     npm run dev
 
   #### Start the back-end server
-    cd ../backend
+    cd backend
     npm run develop
 
 5. Access the application in your browser at http://localhost:3000.
