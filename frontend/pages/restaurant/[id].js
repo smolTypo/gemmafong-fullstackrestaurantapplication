@@ -105,7 +105,7 @@ export default function Restaurant() {
 
   return (
     <div className='py-6'>
-      <h1 className="text-2xl font-bold text-green-600">
+      <h1 className="text-3xl font-bold text-green-600">
         {restaurant.name}
       </h1>
 
