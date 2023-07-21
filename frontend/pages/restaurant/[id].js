@@ -3,8 +3,10 @@ import { centsToDollars } from "@/utils/centsToDollars";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 
-import Image from "next/image"; 
-import Loader from '@/components/Loader';
+import Image from "next/image";
+import Loader from "@/components/Loader";
+import React, { useState } from "react"; // Add the React and useState imports
+
 
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
@@ -46,15 +48,14 @@ function DishCard({ data }) {
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 p-4">
-
       <div className="h-full bg-gray-100 rounded-2xl">
         <Image
           className="w-full rounded-2xl"
           height={300}
           width={300}
-          src={`${process.env.STRAPI_URL || "https://strapi-7u75.onrender.com"}${
-            data.attributes.image.data.attributes.url
-          }`} 
+          src={`${
+            process.env.STRAPI_URL || "https://strapi-7u75.onrender.com"
+          }${data.attributes.image.data.attributes.url}`}
           alt=""
         />
         <div className="p-8">
@@ -86,32 +87,52 @@ function DishCard({ data }) {
 export default function Restaurant() {
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, {
-    variables: { id: router.query.id },
+    variables: { id: router.query.id, query: "" },
   });
+
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e) => {
+    setQuery(e.target.value);
+  };
 
   if (error) return "Error Loading Dishes";
   if (loading) return <Loader />;
-  if (data.restaurant.data.attributes.dishes.data.length) {
-    const { restaurant } = data;
 
-    return (
-      <div className='py-6'>
-        <h1 className="text-4xl font-bold text-green-600">
-          {restaurant.data.attributes.name}
-        </h1>
-        <div className="py-16 px-8 bg-white rounded-3xl">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-wrap -m-4 mb-6">
-              {restaurant.data.attributes.dishes.data.map((res) => {
+  const restaurant = data?.restaurant?.data?.attributes;
+
+  if (!restaurant) return <h1>No Dishes Found</h1>;
+
+  return (
+    <div className='py-6'>
+      <h1 className="text-4xl font-bold text-green-600">
+        {restaurant.name}
+      </h1>
+
+      {/* Search Bar */}
+      <div className="mb-6">
+        <input
+          className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+          type="text"
+          placeholder="Search dishes"
+          value={query}
+          onChange={handleSearch}
+        />
+      </div>
+
+      <div className="py-16 px-8 bg-white rounded-3xl">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap -m-4 mb-6">
+            {restaurant.dishes.data
+              .filter((dish) =>
+                dish.attributes.name.toLowerCase().includes(query.toLowerCase())
+              )
+              .map((res) => {
                 return <DishCard key={res.id} data={res} />;
               })}
-            </div>
           </div>
         </div>
       </div>
-    );
-  } else {
-    return <h1>No Dishes Found</h1>;
-  }
+    </div>
+  );
 }
-
