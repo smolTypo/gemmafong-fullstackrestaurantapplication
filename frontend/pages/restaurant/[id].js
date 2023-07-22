@@ -7,7 +7,6 @@ import Image from "next/image";
 import Loader from "@/components/Loader";
 import React, { useState } from "react"; // Add the React and useState imports
 
-
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
     restaurant(id: $id) {
@@ -103,12 +102,15 @@ export default function Restaurant() {
 
   if (!restaurant) return <h1>No Dishes Found</h1>;
 
-  return (
-    <div className='py-6'>
-      <h1 className="text-3xl font-bold text-green-600">
-        {restaurant.name}
-      </h1>
+  const filteredDishes = restaurant.dishes.data.filter((dish) =>
+    dish.attributes.name.toLowerCase().includes(query.toLowerCase())
+  );
 
+  return (
+    <div className="py-6">
+      <h1 className="text-3xl font-bold text-green-600">{restaurant.name}</h1>
+
+      <br></br>
       {/* Search Bar */}
       <div className="mb-6">
         <input
@@ -122,17 +124,18 @@ export default function Restaurant() {
 
       <div className="py-16 px-8 bg-white rounded-3xl">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap -m-4 mb-6">
-            {restaurant.dishes.data
-              .filter((dish) =>
-                dish.attributes.name.toLowerCase().includes(query.toLowerCase())
-              )
-              .map((res) => {
-                return <DishCard key={res.id} data={res} />;
-              })}
-          </div>
+          {filteredDishes.length > 0 ? (
+            <div className="flex flex-wrap -m-4 mb-6">
+              {filteredDishes.map((res) => (
+                <DishCard key={res.id} data={res} />
+              ))}
+            </div>
+          ) : (
+            <p>No dishes found.</p>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
