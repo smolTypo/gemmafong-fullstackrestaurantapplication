@@ -27,7 +27,7 @@ function Navigation() {
             <Link
               href="/"
               passHref
-              className="block text-3xl max-w-max text-white font-semibold"
+              className="block text-2xl max-w-max text-white font-semibold"
             >
               FoodieEats
             </Link>
