@@ -7,6 +7,8 @@ import Image from "next/image";
 import Loader from "@/components/Loader";
 import React, { useState } from "react"; // Add the React and useState imports
 
+import Link from "next/link"; // Add the Link import
+
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
     restaurant(id: $id) {
