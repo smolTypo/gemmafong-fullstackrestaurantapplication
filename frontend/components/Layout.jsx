@@ -36,11 +36,11 @@ function Navigation() {
           <div className="xl:block xl:w-1/3">
             <div className="flex items-center justify-end">
               <Link
-                href="/"
+                href="/checkout"
                 passHref
                 className="text-gray-50 hover:text-yellow-200 font-semibold text-lg"
               >
-                Home
+                Cart
               </Link>
 
               <div className="hxl:block">
