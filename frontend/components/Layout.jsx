@@ -25,10 +25,9 @@ function Navigation() {
             <Link
               href="/"
               passHref
-              className="block text-3xl max-w-max text-white font-semibold">
-              
-                FoodieEats
-              
+              className="block text-3xl max-w-max text-white font-semibold"
+            >
+              FoodieEats
             </Link>
           </div>
 
@@ -37,10 +36,9 @@ function Navigation() {
               <Link
                 href="/"
                 passHref
-                className="text-gray-50 hover:text-yellow-200 font-semibold text-lg">
-                
-                  Home
-                
+                className="text-gray-50 hover:text-yellow-200 font-semibold text-lg"
+              >
+                Home
               </Link>
 
               <div className="hxl:block">
@@ -61,18 +59,16 @@ function Navigation() {
                     <Link
                       href="/login"
                       passHref
-                      className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50 hover:text-yellow-200 font-semibold bg-transparent rounded-md">
-                      
-                        Log In
-                      
+                      className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50 hover:text-yellow-200 font-semibold bg-transparent rounded-md"
+                    >
+                      Log In
                     </Link>
                     <Link
                       href="/register"
                       passHref
-                      className="inline-block py-2 px-4 text-sm leading-5 text-green-50 bg-green-600 hover:bg-green-700 font-semibold focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md">
-                      
-                        Sign Up
-                      
+                      className="inline-block py-2 px-4 text-sm leading-5 text-green-50 bg-green-600 hover:bg-green-700 font-semibold focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md"
+                    >
+                      Sign Up
                     </Link>
                   </div>
                 )}
@@ -84,15 +80,6 @@ function Navigation() {
     </header>
   );
 }
-  
-function Footer() {
-  return (
-    <footer className="bg-green-800 text-white py-4 text-center">
-      Capstone Full Stack Restaurant Application Project developed by <a href="https://www.linkedin.com/in/gemmafong/">Gemma Fong</a> as part of MIT xPRO Full Stack Development with MERN. <a href="https://github.com/smolTypo/gemmafong-fullstackrestaurantapplication">Repository on GitHub</a>.
-    </footer>
-  );
-}
-  
 
 export default function Layout(props) {
   const title = "Welcome to FoodieEats";
