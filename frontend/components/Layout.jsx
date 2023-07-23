@@ -43,7 +43,7 @@ function Navigation() {
                 Cart
               </Link>
 
-              <div className="hidden md:block">
+              <div className="w-1/2 md:w-1/3">
                 {user ? (
                   <div className="flex items-center justify-end">
                     <span className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50 hover:text-gray-100 bg-transparent font-semibold rounded-md">
