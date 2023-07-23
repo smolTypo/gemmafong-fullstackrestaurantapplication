@@ -61,7 +61,7 @@ function Navigation() {
                     <Link
                       href="/login"
                       passHref
-                      className="inline-block py-2 px-4 mr-2 leading-5 text-gray-50 hover:text-yellow-200 font-semibold bg-transparent rounded-md"
+                      className="inline-block py-2 px-4 text-lg mr-2 leading-5 text-gray-50 hover:text-yellow-200 font-semibold bg-transparent rounded-md"
                     >
                       Log In
                     </Link>
