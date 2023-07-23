@@ -2,6 +2,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import Cookie from "js-cookie";
+import Footer from "@/components/Footer"
+
 const Cart = dynamic(() => import("@/components/Cart"), { ssr: false });
 
 import Head from "next/head";
