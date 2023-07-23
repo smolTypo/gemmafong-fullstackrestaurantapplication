@@ -122,6 +122,16 @@ export default function Restaurant() {
         />
       </div>
 
+     <div className="text-left mt-8">
+        <Link
+          href="/"
+          passHref
+          className="block text-green-600 font-semibold hover:underline"
+        >
+          Back to All Restaurants
+        </Link>
+      </div>
+            
       <div className="py-16 px-8 bg-white rounded-3xl">
         <div className="max-w-7xl mx-auto">
           {filteredDishes.length > 0 ? (
