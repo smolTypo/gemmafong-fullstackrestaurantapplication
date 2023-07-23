@@ -40,7 +40,7 @@ return (
                 passHref
                 className="text-gray-50 hover:text-yellow-200 font-semibold text-lg"
               >
-                Cart
+                Checkout
               </Link>
 
              <div className="hxl:block">
