@@ -130,7 +130,7 @@ export default function Restaurant() {
           passHref
           className="block text-green-600 font-semibold hover:underline"
         >
-          Back to All Restaurants
+          &larr; Back to All Restaurants
         </Link>
       </div>
             
