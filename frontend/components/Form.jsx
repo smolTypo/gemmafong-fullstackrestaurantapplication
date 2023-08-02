@@ -7,6 +7,7 @@ export default function Form({
   setFormData,
   callback,
   error,
+  handleGoogleLogin, // Added prop for Google login functionality
 }) {
   return (
     <section className="py-24 md:py-32 bg-white">
@@ -64,6 +65,13 @@ export default function Form({
               type="submit"
             >
               {buttonText}
+            </button>
+            <button
+              className="inline-block py-3 px-7 w-full text-base text-green-50 font-medium text-center leading-6 bg-blue-500 hover:bg-green-600 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-md shadow-sm"
+              type="button"
+              onClick={handleGoogleLogin} // Call handleGoogleLogin on button click
+            >
+              Login with Google
             </button>
           </form>
         </div>
