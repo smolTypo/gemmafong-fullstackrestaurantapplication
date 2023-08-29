@@ -8,7 +8,6 @@ Project deployment:
 https://gemmafong-fullstackrestaurantapplication-smoltypo.vercel.app
 
 
-<img src="https://github.com/smolTypo/restaurant-app/blob/main/RestaurantApp.png"/>
 
 ## The application is built using the following technologies:
 
